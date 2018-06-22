@@ -1,4 +1,4 @@
 # MEANAuthApp
 
 ## Description
-An login app user MongoDB, Angular, Express and NodeJs
+An login app using MongoDB, Angular, Express and NodeJs
