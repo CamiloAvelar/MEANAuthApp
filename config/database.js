@@ -1,4 +1,6 @@
-module.exports = {
-    database: 'mongodb://admin:admin123@ds117101.mlab.com:17101/meanauthcamilo',
-    secret: 'mysecret'
-}
+if(process.env.NODE_ENV === 'production') {
+    module.exports = require('./database_prod');
+  } else {
+    module.exports = require('./database_dev');
+  };
+  
