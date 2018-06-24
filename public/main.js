@@ -501,7 +501,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\n  </ul>\n</div>\n"
+module.exports = "<div *ngIf=\"user\">\n  <h2 class=\"page-header\">{{user.name}}</h2>\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">Username: {{user.username}}</li>\n    <li class=\"list-group-item\">Email: {{user.email}}</li>\n    <li class=\"list-group-item\">Verified: {{user.verified ? 'Yes' : 'No'}}</li>\n  </ul>\n</div>\n"
 
 /***/ }),
 
@@ -752,9 +752,9 @@ var jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_2__["JwtHelperSe
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        this.registerUrl = 'users/register';
-        this.authUrl = 'users/authenticate';
-        this.profileUrl = 'users/profile';
+        this.registerUrl = 'http://localhost:8080/users/register';
+        this.authUrl = 'http://localhost:8080/users/authenticate';
+        this.profileUrl = 'http://localhost:8080/users/profile';
     }
     AuthService.prototype.registeruser = function (user) {
         return this.http.post(this.registerUrl, user, httpOptions);
