@@ -1,15 +1,16 @@
 var nodemailer = require("nodemailer");
+const config = require('../config/email');
 
 module.exports.sendMail = (host, email, id, callback) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        host: 'mail.republicakatapulta.com.br',
+        host: config.host,
         port: 25,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'teste@republicakatapulta.com.br', // generated ethereal user
-            pass: '123ab' // generated ethereal password
+            user: config.user, // generated ethereal user
+            pass: config.pass // generated ethereal password
         },
         tls: {
             rejectUnauthorized:false
