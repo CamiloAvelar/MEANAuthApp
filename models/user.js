@@ -18,6 +18,10 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
     }
 });
 
@@ -31,6 +35,13 @@ module.exports.getUserByUsername = function(username, callback){
     const query = {username: username}
     User.findOne(query, callback);
 }
+
+module.exports.verifyUser = (userId, callback) => {
+    User.findOneAndUpdate(
+        { _id: userId }, 
+        { $set: {verified: true }},
+        callback);
+};
 
 module.exports.addUser = function(newUser, callback){
     bcrypt.genSalt(10, (err, salt) => {

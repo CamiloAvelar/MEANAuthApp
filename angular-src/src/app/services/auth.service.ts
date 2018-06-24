@@ -17,9 +17,9 @@ const jwtHelper = new JwtHelperService();
 export class AuthService {
   authToken: any;
   user: User;
-  registerUrl: string = 'users/register';
-  authUrl: string = 'users/authenticate';
-  profileUrl: string = 'users/profile';
+  registerUrl: string = 'http://localhost:8080/users/register';
+  authUrl: string = 'http://localhost:8080/users/authenticate';
+  profileUrl: string = 'http://localhost:8080/users/profile';
 
   constructor(private http: HttpClient) { }
 
