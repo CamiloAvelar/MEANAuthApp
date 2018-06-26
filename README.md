@@ -10,3 +10,5 @@ An login app using MongoDB, Angular, Express and NodeJs
 ### Online:
 
 Actually deployed on [Heroku](https://obscure-journey-42939.herokuapp.com/).
+
+Thanks to Brad Traversy.
