@@ -51,14 +51,13 @@ module.exports = function(passport){
                             return done(err, null);
                         } else {
                             this.createJWT(user);
-                            //TODO:Melhorar esse HOST, descobrir como fazer variavel global
                             Email.sendMail(newUser.email, newUser._id, (err, msg) => {
                                 console.log(msg);
                             });
                             return done(null, userAndToken);
                         }
                     })
-                } else {//TODO:Criar uma função para isso
+                } else {
                     this.createJWT(user);
                     return done(null, userAndToken)
                 }
@@ -76,7 +75,7 @@ module.exports = function(passport){
 }
 
 createJWT = (user) => {
-const payload = {id: user._id, name: user.name} // Creat JWT Payload
+const payload = {id: user._id, name: user.name} // Create JWT Payload
 
 const token = jwt.sign(payload, config.secret, {
     expiresIn: 604800 // 1 week
