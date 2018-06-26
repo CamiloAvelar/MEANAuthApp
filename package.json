@@ -10,12 +10,15 @@
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
+    "cookie-parser": "^1.4.3",
     "cors": "*",
     "express": "*",
+    "express-session": "^1.15.6",
     "jsonwebtoken": "*",
     "mongoose": "*",
     "nodemailer": "^4.6.7",
     "passport": "*",
+    "passport-google-oauth20": "^1.0.0",
     "passport-jwt": "*"
   },
   "author": "Camilo Avelar",

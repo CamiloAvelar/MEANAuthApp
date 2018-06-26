@@ -4,6 +4,9 @@ const config = require('../config/database');
 
 // User Schema
 const UserSchema = mongoose.Schema({
+    googleID: {
+        type: String
+    },
     name: {
         type: String
     },
@@ -33,6 +36,11 @@ module.exports.getUserById = function(id, callback){
 
 module.exports.getUserByUsername = function(username, callback){
     const query = {username: username}
+    User.findOne(query, callback);
+}
+
+module.exports.getUserByEmail = function(email, callback){
+    const query = {email: email}
     User.findOne(query, callback);
 }
 

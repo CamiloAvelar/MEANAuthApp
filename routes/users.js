@@ -3,9 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-var nodemailer = require("nodemailer");
 
-const User = require('../models/user');
+const User = require('../models/User');
 const Email = require('../verify/email');
 
 //Register
@@ -13,6 +12,7 @@ router.post('/register', (req, res, next) => {
     const host = req.get('host');
 
     let newUser = new User({
+        googleID: '',
         name: req.body.name,
         email: req.body.email,
         username: req.body.username,
@@ -33,6 +33,36 @@ router.post('/register', (req, res, next) => {
     });
 
 });
+
+//GoogleAuth
+router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    // console.log(req.user);
+    const host = req.get('host');
+    res.redirect(`http://${host}/logingoogle`);
+});
+
+router.get('/check', (req, res) => {
+    if(req.user){
+        console.log(req.user);
+        res.json({
+            success: true, 
+            token: req.user.token, 
+            user: {
+                id: req.user.user._id,
+                name: req.user.user.name,
+                username: req.user.user.username,
+                email: req.user.user.email
+            }});
+    } else {
+        console.log('Not Auth');
+        res.json({
+            success: false,
+            msg: 'User not logged'
+        });
+    }
+})
 
 //Verify
 router.get('/verify', (req, res, next) => {

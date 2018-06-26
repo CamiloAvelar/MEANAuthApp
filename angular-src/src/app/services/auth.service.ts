@@ -17,9 +17,10 @@ const jwtHelper = new JwtHelperService();
 export class AuthService {
   authToken: any;
   user: User;
-  registerUrl: string = 'http://localhost:8080/users/register';
-  authUrl: string = 'http://localhost:8080/users/authenticate';
-  profileUrl: string = 'http://localhost:8080/users/profile';
+  registerUrl: string = '/users/register';
+  authUrl: string = '/users/authenticate';
+  authUrlGoogle: string = '/users/check';
+  profileUrl: string = '/users/profile';
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,10 @@ export class AuthService {
 
   authenticateUser(user): Observable<DataAuth> {
     return this.http.post<DataAuth>(this.authUrl, user, httpOptions);
+  }
+
+  authenticateUserByGoogle(): Observable<any> {
+    return this.http.get<any>(this.authUrlGoogle, httpOptions);
   }
 
   getProfile(): Observable<any>{

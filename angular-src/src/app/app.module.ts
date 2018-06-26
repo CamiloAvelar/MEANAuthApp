@@ -18,11 +18,13 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { LogingoogleComponent } from './components/logingoogle/logingoogle.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path: 'logingoogle', component: LogingoogleComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
 ]
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    LogingoogleComponent
   ],
   imports: [
     BrowserModule,

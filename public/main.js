@@ -108,6 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _components_logingoogle_logingoogle_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/logingoogle/logingoogle.component */ "./src/app/components/logingoogle/logingoogle.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -130,10 +131,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var appRoutes = [
     { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"] },
     { path: 'register', component: _components_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"] },
     { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
+    { path: 'logingoogle', component: _components_logingoogle_logingoogle_component__WEBPACK_IMPORTED_MODULE_16__["LogingoogleComponent"] },
     { path: 'dashboard', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] },
     { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_10__["ProfileComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_13__["AuthGuard"]] }
 ];
@@ -149,7 +152,8 @@ var AppModule = /** @class */ (function () {
                 _components_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
                 _components_register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"],
                 _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
-                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_10__["ProfileComponent"]
+                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_10__["ProfileComponent"],
+                _components_logingoogle_logingoogle_component__WEBPACK_IMPORTED_MODULE_16__["LogingoogleComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -318,7 +322,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>"
+module.exports = "<h2 class=\"page-header\">Login</h2>\r\n<form (submit)=\"onLoginSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Username</label>\r\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Password</label>\r\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\r\n</form>\r\n<div class=\"btn btn-success\">\r\n  <a href=\"./users/google\" class=\"text-white\">Log In com o Google</a>\r\n</div>"
 
 /***/ }),
 
@@ -393,6 +397,93 @@ var LoginComponent = /** @class */ (function () {
             angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/logingoogle/logingoogle.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/components/logingoogle/logingoogle.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/logingoogle/logingoogle.component.html":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/logingoogle/logingoogle.component.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n"
+
+/***/ }),
+
+/***/ "./src/app/components/logingoogle/logingoogle.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/logingoogle/logingoogle.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: LogingoogleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogingoogleComponent", function() { return LogingoogleComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var LogingoogleComponent = /** @class */ (function () {
+    function LogingoogleComponent(authService, router, flashMessage) {
+        this.authService = authService;
+        this.router = router;
+        this.flashMessage = flashMessage;
+    }
+    LogingoogleComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.authenticateUserByGoogle().subscribe(function (data) {
+            console.log(data);
+            if (data.success) {
+                _this.authService.storeUserData(data.token, data.user);
+                _this.flashMessage.show("You're logged!", {
+                    cssClass: 'alert-success',
+                    timeout: 5000
+                });
+                _this.router.navigate(['dashboard']);
+            }
+        });
+    };
+    LogingoogleComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-logingoogle',
+            template: __webpack_require__(/*! ./logingoogle.component.html */ "./src/app/components/logingoogle/logingoogle.component.html"),
+            styles: [__webpack_require__(/*! ./logingoogle.component.css */ "./src/app/components/logingoogle/logingoogle.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"]])
+    ], LogingoogleComponent);
+    return LogingoogleComponent;
 }());
 
 
@@ -752,15 +843,19 @@ var jwtHelper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_2__["JwtHelperSe
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        this.registerUrl = 'http://localhost:8080/users/register';
-        this.authUrl = 'http://localhost:8080/users/authenticate';
-        this.profileUrl = 'http://localhost:8080/users/profile';
+        this.registerUrl = '/users/register';
+        this.authUrl = '/users/authenticate';
+        this.authUrlGoogle = '/users/check';
+        this.profileUrl = '/users/profile';
     }
     AuthService.prototype.registeruser = function (user) {
         return this.http.post(this.registerUrl, user, httpOptions);
     };
     AuthService.prototype.authenticateUser = function (user) {
         return this.http.post(this.authUrl, user, httpOptions);
+    };
+    AuthService.prototype.authenticateUserByGoogle = function () {
+        return this.http.get(this.authUrlGoogle, httpOptions);
     };
     AuthService.prototype.getProfile = function () {
         return this.http.get(this.profileUrl, this.setAuthHttpHeaders());
