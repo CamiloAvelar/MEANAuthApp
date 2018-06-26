@@ -7,6 +7,8 @@ const config = require('./database');
 const keys = require('./keys');
 const Email = require('../verify/email');
 
+const hostURL = require('../utils/host');
+
 let opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secret;
@@ -30,11 +32,9 @@ module.exports = function(passport){
         new GoogleStrategy({
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
-            callbackURL:`/users/google/callback`,
+            callbackURL:`https://${hostURL.host}/users/google/callback`,
             proxy:true
         }, (accessToken, refreshToken, profile, done) => {
-            // console.log(accessToken);
-            // console.log(profile);
             const randPass = Math.floor((Math.random() * 100000) + 1) + 'a';
             const newUser = new User({
                 googleID: profile.id,
@@ -50,33 +50,16 @@ module.exports = function(passport){
                         if(err){
                             return done(err, null);
                         } else {
-                            const payload = {id: user._id, name: user.name} // Creat JWT Payload
-
-                            const token = jwt.sign(payload, config.secret, {
-                                expiresIn: 604800 // 1 week
-                            });
-            
-                            const userAndToken = {
-                                user,
-                                token: 'Bearer ' + token
-                            }
-                            Email.sendMail('obscure-journey-42939.herokuapp.com', newUser.email, newUser._id, (err, msg) => {
+                            this.createJWT(user);
+                            //TODO:Melhorar esse HOST, descobrir como fazer variavel global
+                            Email.sendMail(newUser.email, newUser._id, (err, msg) => {
                                 console.log(msg);
                             });
                             return done(null, userAndToken);
                         }
                     })
-                } else {
-                    const payload = {id: user._id, name: user.name} // Creat JWT Payload
-
-                    const token = jwt.sign(payload, config.secret, {
-                        expiresIn: 604800 // 1 week
-                    });
-    
-                    const userAndToken = {
-                        user,
-                        token: 'Bearer ' + token
-                    }
+                } else {//TODO:Criar uma função para isso
+                    this.createJWT(user);
                     return done(null, userAndToken)
                 }
             })
@@ -90,4 +73,17 @@ module.exports = function(passport){
     passport.deserializeUser((userAndToken, done) => {
         done(null, userAndToken);
     });
+}
+
+createJWT = (user) => {
+const payload = {id: user._id, name: user.name} // Creat JWT Payload
+
+const token = jwt.sign(payload, config.secret, {
+    expiresIn: 604800 // 1 week
+});
+
+return userAndToken = {
+    user,
+    token: 'Bearer ' + token
+}
 }

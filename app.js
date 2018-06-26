@@ -1,3 +1,8 @@
+/**TODO:
++Automate the deploy to heroku
++Fix the TODOS in googleoauth
+**/
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');

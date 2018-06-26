@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Data } from '../models/data';
+import { Data } from '../models/Data';
 import { DataAuth } from '../models/DataAuth';
-import { User } from '../models/user';
+import { User } from '../models/User';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const httpOptions = {
@@ -17,7 +17,7 @@ const jwtHelper = new JwtHelperService();
 export class AuthService {
   authToken: any;
   user: User;
-  registerUrl: string = '/users/register';
+  registerUrl: string = '/users/register'; //TODO: Achar um jeito de colocar o host aqui
   authUrl: string = '/users/authenticate';
   authUrlGoogle: string = '/users/check';
   profileUrl: string = '/users/profile';

@@ -3,13 +3,13 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
+const hostURL = require('../utils/host');
 
 const User = require('../models/User');
 const Email = require('../verify/email');
 
 //Register
 router.post('/register', (req, res, next) => {
-    const host = req.get('host');
 
     let newUser = new User({
         googleID: '',
@@ -28,7 +28,7 @@ router.post('/register', (req, res, next) => {
         }
     });
 
-    Email.sendMail(host, newUser.email, newUser._id, (err, msg) => {
+    Email.sendMail(newUser.email, newUser._id, (err, msg) => {
         console.log(msg);
     });
 
@@ -38,9 +38,7 @@ router.post('/register', (req, res, next) => {
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    // console.log(req.user);
-    const host = req.get('host');
-    res.redirect(`http://${host}/logingoogle`);
+    res.redirect(`http://${hostURL.host}/logingoogle`);
 });
 
 router.get('/check', (req, res) => {

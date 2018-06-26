@@ -1,7 +1,8 @@
 var nodemailer = require("nodemailer");
 const config = require('../config/email');
+const hostURL = require('../utils/host');
 
-module.exports.sendMail = (host, email, id, callback) => {
+module.exports.sendMail = (email, id, callback) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -17,7 +18,7 @@ module.exports.sendMail = (host, email, id, callback) => {
         }
     });
 
-    link="http://"+host+"/users/verify?id="+id;
+    link="http://"+hostURL.host+"/users/verify?id="+id;
     mailOptions={
         from: '"Camilo Avelar" <teste@republicakatapulta.com.br>',
         to : email,

@@ -5,21 +5,22 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "start": "node app",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix angular-src"
   },
   "dependencies": {
-    "bcryptjs": "*",
-    "body-parser": "*",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
-    "cors": "*",
-    "express": "*",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "jsonwebtoken": "*",
-    "mongoose": "*",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.1.6",
     "nodemailer": "^4.6.7",
-    "passport": "*",
+    "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "passport-jwt": "*"
+    "passport-jwt": "^4.0.0"
   },
   "author": "Camilo Avelar",
   "license": "ISC"
